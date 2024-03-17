@@ -30,22 +30,32 @@ export default function Home() {
                 fontSize: "2rem",
                 fontWeight: "300",
                 borderTop: "1px solid black !important",
-                textAlign: "justify",
+                textAlign: "left",
                 borderRadius: "0px",
               }}
             >
-              <b style={{ fontSize: "4.2rem" }}>
+              <b style={{ fontSize: "3rem" }}>
                 <i>An entertainment company</i>
               </b>{" "}
-              run by{" "}
+              <br />
+              run by <br />
               <b>
-                <i>professional musicians and audio engineers</i>
+                <i>
+                  professional musicians <br /> and audio engineers
+                </i>
               </b>{" "}
-              where{" "}
-              <mark style={{ padding: "0px 1rem" }}>customer satisfaction</mark>{" "}
+              <br />
+              where <br />
+              <mark style={{ padding: "0px 1rem" }}>
+                customer satisfaction
+              </mark>{" "}
+              <br />
               and{" "}
-              <mark style={{ padding: "0px 1rem" }}>attention to detail</mark>{" "}
-              is our <b>highest priority.</b>
+              <mark style={{ padding: "0px 1rem" }}>
+                attention to detail
+              </mark>{" "}
+              <br />
+              is our <br /> <b>highest priority.</b>
             </BannerTile>
           </Row>
         </Section>
@@ -91,7 +101,7 @@ export default function Home() {
             </Slide>
           </GalleryTile>} */}
             <VideoTile
-              src="/videos/DJReel.Horizontal.mp4"
+              src="https://drive.google.com/uc?id="
               src_type="video/mp4"
               height="40rem"
               width="100%"
@@ -109,12 +119,18 @@ export default function Home() {
         </Section>{" "}
         <Section id="home_subsection_1">
           <Row>
-            <ImageTile src="/images/Culver Hotel-8.png" />
+            <ImageTile
+              src="/images/Culver Hotel-8.png"
+              caption="Unforgettable DJ Services. Unforgettable Memories"
+            />
           </Row>
         </Section>
         <Section id="home_subsection_2">
           <Row>
-            <ImageTile src="/images/LRphoto2-29.png" />
+            <ImageTile
+              src="/images/LRphoto2-29.png"
+              caption="Lighting, DJ, Photo Booth Services, and More...!"
+            />
           </Row>
         </Section>
         <Section id="home_subsection_3">

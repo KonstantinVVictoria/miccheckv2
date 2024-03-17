@@ -1,12 +1,14 @@
 /* eslint-disable jsx-a11y/alt-text */
 "use client";
 import styles from "./ImageTiles.styles.module.css";
-import { SyntheticEvent, createContext, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
+import ClientSideScript from "./CSR";
 type ImageProps = {
   height: string;
   width: string;
   alt: string;
   src: string;
+  caption?: string;
   style?: {
     [key: string]: string;
   };
@@ -14,11 +16,19 @@ type ImageProps = {
 
 export default function ImageTile(props: ImageProps) {
   const ImageRef = useRef(null);
-  let attributes = { ...props, height: undefined, width: undefined };
+  const CaptionRef = useRef(null);
+
+  let attributes = {
+    ...props,
+    height: undefined,
+    width: undefined,
+    caption: undefined,
+  };
 
   useEffect(() => {
     const ImageElement = ImageRef.current as unknown as HTMLImageElement;
     const ContainerElement = ImageElement.parentElement as HTMLDivElement;
+
     if (ImageElement.naturalWidth !== 0) {
       loadElement(ImageElement);
       console.log("still");
@@ -34,6 +44,13 @@ export default function ImageTile(props: ImageProps) {
       className={`${styles.tile}`}
       style={{ ...props.style, height: props.height, width: props.width }}
     >
+      <ClientSideScript Image={ImageRef} Caption={CaptionRef} />
+      {(props?.caption && (
+        <div className={styles.caption}>
+          <p ref={CaptionRef}>{props.caption}</p>
+        </div>
+      )) ||
+        null}
       {/*eslint-disable-next-line @next/next/no-img-element*/}
       <img {...attributes} ref={ImageRef} />
     </div>

@@ -12,7 +12,24 @@
     opacity: 0;
     height: 100%;
     width: 100%;
-    transition: opacity 300ms ease-in;
+    /* transition: opacity 300ms ease-in, filter 1s linear; */
+  }
+}
+
+.caption {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  & > p {
+    font-size: 3rem;
+    font-style: italic;
+    position: absolute;
+    z-index: 2;
+    transition: transform 200ms linear, opacity 200ms linear;
   }
 }
 @keyframes loading-animation {
@@ -30,4 +47,11 @@
 }
 .loading {
   animation: loading-animation 1s ease-in-out infinite alternate;
+}
+@media screen and (max-width: 900px) {
+  .caption {
+    & > p {
+      font-size: 1rem !important;
+    }
+  }
 }
