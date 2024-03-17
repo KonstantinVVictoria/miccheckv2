@@ -1,0 +1,11 @@
+.svg_icon {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 100ms ease-in;
+}
+
+.selectable:hover {
+  transform: scale(120%, 120%);
+}

@@ -1,0 +1,52 @@
+:root {
+  --obsidian: #rgb(15, 19, 34);
+  --navy-blue: #3a405a;
+  --sky-blue: #aec5eb;
+  --peach: #f9dec9;
+
+  --primary-color: var(--navy--blue);
+  --secondary-color: var(--sky-blue);
+  --trim-color: var(--peach);
+
+  --card-border-radius: 5px;
+  --document-gap: 0.25rem;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  color: var(--obsidian);
+  font-family: var(--main-font);
+}
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  background-color: white;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/*Generics*/
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+@media screen and (max-width: 900px) {
+  .title_card {
+    padding: 0.5rem !important;
+    & > h1 {
+      font-size: 1.3rem !important;
+    }
+    & > svg {
+      height: 3rem !important;
+      width: 3rem !important;
+    }
+  }
+}

@@ -1,0 +1,12 @@
+@media screen and (max-width: 900px) {
+  .title_card {
+    padding: 0.5rem !important;
+    & > h1 {
+      font-size: 1.3rem !important;
+    }
+    & > svg {
+      height: 3rem !important;
+      width: 3rem !important;
+    }
+  }
+}

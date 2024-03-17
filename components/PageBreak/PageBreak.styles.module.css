@@ -1,0 +1,15 @@
+.container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  & > span {
+    background-color: black;
+    height: 1px;
+    width: 100%;
+  }
+  & > h1 {
+    margin: 1rem;
+    font-weight: 400;
+  }
+}

@@ -1,0 +1,8 @@
+.tile {
+  composes: tile-generic from "../Tile.styles.module.css";
+  width: 100%;
+  background-color: transparent;
+  border: 1px solid black;
+  box-shadow: none;
+  padding: 1rem;
+}

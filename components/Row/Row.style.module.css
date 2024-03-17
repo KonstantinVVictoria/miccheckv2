@@ -1,0 +1,17 @@
+.row {
+  display: flex;
+}
+@media screen and (max-width: 1490px) {
+  .row {
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 900px) {
+  .row {
+    width: 100vw;
+  }
+  .row > * {
+    width: 100vw !important;
+    border-radius: 0px !important;
+  }
+}

@@ -1,0 +1,35 @@
+.tile {
+  composes: tile-generic from "../Tile.styles.module.css";
+  display: block;
+  position: relative;
+  background-color: rgb(200, 200, 200);
+  overflow: hidden;
+
+  transition: background-color 200ms ease-in, transform 200ms ease-in;
+  transform: scale(96%, 96%);
+  height: auto;
+  & > iframe {
+    opacity: 0;
+    transition: opacity 600ms ease-in;
+  }
+}
+@keyframes loading-animation {
+  from {
+    background-color: rgb(200, 200, 200);
+    transform: scale(96%, 96%);
+  }
+  to {
+    background-color: rgb(230, 230, 230);
+    transform: scale(100%, 100%);
+  }
+}
+.loaded {
+  transform: scale(100%, 100%);
+  & > iframe {
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
+.loading {
+  animation: loading-animation 1s ease-in-out infinite alternate;
+}

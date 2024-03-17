@@ -1,0 +1,30 @@
+.config {
+  composes: config from "../Sidebar/Sidebar.styles.module.css";
+  --reference-width: 1920px;
+  --document-width: calc(var(--reference-width) / 1.6);
+}
+
+.document {
+  composes: config;
+
+  display: flex;
+  flex-direction: column;
+  margin-top: 4rem;
+  width: var(--document-width);
+  max-width: calc(100vw - var(--sidebar-width));
+  gap: var(--document-gap);
+}
+@media screen and (max-width: 900px) {
+  .document {
+    width: 100vw;
+    max-width: 100vw;
+    margin-top: 0rem;
+  }
+}
+
+/*debug*/
+/* .document {
+  composes: config;
+  height: 100vh;
+  background-color: black;
+} */

@@ -1,0 +1,123 @@
+.config {
+  /*Sidebar Config*/
+  --sidebar-width: 18rem;
+  --sidebar-background-color: white;
+
+  /*Sections Config */
+  --header-section-height: 10%;
+  --nav-link-section-height: 40%;
+  --footer-section-height: 20%;
+
+  /*Header Config*/
+  --logo-width: 70%;
+
+  /*Navigation Config*/
+  --navlink-font-size: 1.3rem;
+  --navlink-font-weight: 300;
+}
+
+.container {
+  composes: config;
+
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  height: 100vh;
+  width: var(--sidebar-width);
+  background-color: var(--sidebar-background-color);
+  justify-content: center;
+
+  .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: var(--header-section-height);
+    width: 100%;
+
+    .logo {
+      height: var(--logo-width);
+      width: var(--logo-width);
+    }
+  }
+  .nav_links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10%;
+    justify-content: center;
+    height: var(--nav-link-section-height);
+    width: 100%;
+
+    .link {
+      text-decoration: none;
+      display: block;
+      position: relative;
+      overflow: hidden;
+      font-size: var(--navlink-font-size);
+      font-weight: var(--navlink-font-weight);
+      transition: font-weight 200ms ease-in;
+      &:hover {
+        font-weight: 500;
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 0.2rem;
+        background-color: var(--sky-blue);
+        opacity: 1;
+        transition: opacity 300ms, transform 300ms;
+        opacity: 1;
+        transform: translate3d(-101%, 0, 0);
+      }
+      &:hover::after,
+      &:focus::after {
+        color: var(--sky-blue);
+        transform: translate3d(0, 0, 0);
+      }
+    }
+  }
+  .footer {
+    width: 100%;
+    height: var(--footer-section-height);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & p {
+      font-size: 0.9rem;
+    }
+    .handles {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 2rem;
+      & ul {
+        list-style-type: none;
+      }
+    }
+  }
+}
+
+/*debug*/
+/* .container {
+  composes: config;
+  background-color: aquamarine;
+
+  .header {
+    background-color: red;
+  }
+  .nav_links {
+    background-color: rgb(4, 0, 255);
+  }
+  .footer {
+    background-color: rgb(255, 0, 157);
+  }
+} */
+@media screen and (max-width: 900px) {
+  .container {
+    display: none;
+  }
+}
