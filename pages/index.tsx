@@ -60,8 +60,8 @@ export default function Home() {
           </Row>
         </Section>
         <Section id="home_section">
-          <Row>
-            {/* <BannerTile
+          {/* <Row>
+            <BannerTile
               id={styles.title_card}
               style={{
                 backgroundColor: "black",
@@ -82,8 +82,8 @@ export default function Home() {
               >
                 Mic Check Entertainment
               </h1>
-            </BannerTile> */}
-          </Row>
+            </BannerTile>
+          </Row> */}
           <Row>
             {/* {          <GalleryTile height="30rem" width="100%">
             <Slide src="/images/dj_kev_closeup_side.jpg" alt="photographer">
@@ -105,6 +105,7 @@ export default function Home() {
               src_type="video/mp4"
               height="40rem"
               width="100%"
+              alt="video"
             />
           </Row>
           {/* <Row>
@@ -122,6 +123,7 @@ export default function Home() {
             <ImageTile
               src="/images/Culver Hotel-8.png"
               caption="Unforgettable DJ Services. Unforgettable Memories"
+              alt="dj kev"
             />
           </Row>
         </Section>
@@ -130,12 +132,13 @@ export default function Home() {
             <ImageTile
               src="/images/LRphoto2-29.png"
               caption="Lighting, DJ, Photo Booth Services, and More...!"
+              alt="lighting"
             />
           </Row>
         </Section>
         <Section id="home_subsection_3">
           <Row>
-            <ImageTile src="/images/Kev DJ Culver Hotel-28.png" />
+            <ImageTile src="/images/Kev DJ Culver Hotel-28.png" alt="dancing" />
           </Row>
         </Section>
         <PageBreak>Mixes</PageBreak>
@@ -174,7 +177,7 @@ export default function Home() {
           </Row>
         </Section>
         <PageBreak>Book</PageBreak>
-        <Section id="book_section"></Section> <PageBreak>Jobs</PageBreak>
+        <PageBreak>Jobs</PageBreak>
       </Document>
     </>
   );

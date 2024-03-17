@@ -4,8 +4,8 @@ import styles from "./ImageTiles.styles.module.css";
 import { useEffect, useRef } from "react";
 import ClientSideScript from "./CSR";
 type ImageProps = {
-  height: string;
-  width: string;
+  height?: string;
+  width?: string;
   alt: string;
   src: string;
   caption?: string;
