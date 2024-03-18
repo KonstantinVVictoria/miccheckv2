@@ -140,9 +140,9 @@ export default function Home() {
                 }}
               >
                 <h1>
-                  It's not just entertainment.
+                  {`It's not just entertainment.`}
                   <br />
-                  It's an experience.
+                  {`It's an experience.`}
                 </h1>
                 <p>
                   We are an entertainment company run by professional musicians
