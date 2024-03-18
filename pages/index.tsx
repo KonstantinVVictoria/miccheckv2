@@ -23,8 +23,8 @@ export default function Home() {
       </Head>
 
       <Document>
-        <Section id="text_tile_1">
-          <Row>
+        {/* <Section id="text_tile_1">
+          <Row style={{ gap: "0" }}>
             <BannerTile
               style={{
                 fontSize: "2rem",
@@ -57,8 +57,19 @@ export default function Home() {
               <br />
               is our <br /> <b>highest priority.</b>
             </BannerTile>
+            <ImageTile
+              height="30rem"
+              src="/images/Culver Hotel-8.png"
+              alt="dj kev"
+              style={{
+                objectFit: "cover",
+                borderRadius: "0px",
+                border: "1px solid black",
+                borderLeft: "none",
+              }}
+            />
           </Row>
-        </Section>
+        </Section> */}
         <Section id="home_section">
           {/* <Row>
             <BannerTile
