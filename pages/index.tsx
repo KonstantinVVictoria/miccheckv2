@@ -112,12 +112,57 @@ export default function Home() {
             </Slide>
           </GalleryTile>} */}
             <VideoTile
-              src="https://drive.google.com/uc?id="
+              mobile_full
+              src="/videos/DJReel.Horizontal.mp4"
               src_type="video/mp4"
               height="40rem"
               width="100%"
               alt="video"
-            />
+              video_style={{
+                filter:
+                  "blur(7px) brightness(40%) saturate(110%) contrast(110%)",
+                transform: "scale(120%,120%)",
+              }}
+              overlay_style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: "20%",
+                flexDirection: "column",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "start",
+                  justifyContent: "center",
+                  flexDirection: "column",
+                }}
+              >
+                <h1>
+                  It's not just entertainment.
+                  <br />
+                  It's an experience.
+                </h1>
+                <p>
+                  We are an entertainment company run by professional musicians
+                  and audio engineers where customer satisfaction and attention
+                  to detail is our highest priority.
+                </p>
+              </div>
+              <button
+                style={{
+                  border: "1px solid white",
+                  background: "transparent",
+                  fontSize: "2rem",
+                  marginTop: "2rem",
+                  padding: "0.5rem 1rem",
+                  borderRadius: "var(--card-border-radius)",
+                }}
+              >
+                Book Now
+              </button>
+            </VideoTile>
           </Row>
           {/* <Row>
             <BannerTile style={{ border: "none" }}>

@@ -8,9 +8,17 @@ type VideoProps = {
   alt: string;
   src: string;
   src_type: string;
+  mobile_full?: boolean;
   style?: {
     [key: string]: string;
   };
+  video_style?: {
+    [key: string]: string;
+  };
+  overlay_style?: {
+    [key: string]: string;
+  };
+  children?: React.ReactNode;
 };
 
 export default function VideoTile(props: VideoProps) {
@@ -38,9 +46,15 @@ export default function VideoTile(props: VideoProps) {
 
   return (
     <div
-      className={`${styles.tile} ${styles.loading}`}
+      className={
+        `${styles.tile} ${styles.loading}` +
+        (props.mobile_full ? ` ${styles.full}` : "")
+      }
       style={{ ...props.style, height: props.height, width: props.width }}
     >
+      <div className={styles.overlay} style={{ ...props.overlay_style }}>
+        {props.children}
+      </div>
       {/*eslint-disable-next-line @next/next/no-img-element*/}
       <video
         style={{
@@ -49,6 +63,7 @@ export default function VideoTile(props: VideoProps) {
           objectFit: "cover",
           backgroundColor: "transparent",
           opacity: 0,
+          ...props.video_style,
         }}
         {...attributes}
         ref={VideoRef}
