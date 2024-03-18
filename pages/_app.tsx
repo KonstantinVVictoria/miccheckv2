@@ -1,4 +1,5 @@
 import Main from "../components/Main/Main";
+import NavBar from "../components/NavBar/NavBar";
 import Sidebar from "../components/Sidebar/Sidebar";
 import Viewport from "../components/Viewport/Viewport";
 import "../styles/globals.css";
@@ -15,6 +16,7 @@ const main_font = Jost({ subsets: ["latin"], variable: "--main-font" });
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <Viewport font={`${main_font.variable} ${cursive_font.variable}`}>
+      <NavBar />
       <Sidebar />
       <Main>
         <Component {...pageProps} />

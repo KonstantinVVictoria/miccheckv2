@@ -33,7 +33,6 @@
 }
 
 .full {
-  height: auto;
 }
 @keyframes loading-animation {
   from {
@@ -53,6 +52,8 @@
 }
 @media screen and (max-width: 900px) {
   .full {
-    height: 100svh !important;
+    composes: config from "../../NavBar/NavBar.styles.module.css";
+
+    height: calc(100svh - var(--navbar-height)) !important;
   }
 }

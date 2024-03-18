@@ -21,7 +21,6 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <Document>
         {/* <Section id="text_tile_1">
           <Row style={{ gap: "0" }}>
@@ -150,18 +149,7 @@ export default function Home() {
                   to detail is our highest priority.
                 </p>
               </div>
-              <button
-                style={{
-                  border: "1px solid white",
-                  background: "transparent",
-                  fontSize: "2rem",
-                  marginTop: "2rem",
-                  padding: "0.5rem 1rem",
-                  borderRadius: "var(--card-border-radius)",
-                }}
-              >
-                Book Now
-              </button>
+              <button className={styles.book_now_button}>Book Now</button>
             </VideoTile>
           </Row>
           {/* <Row>

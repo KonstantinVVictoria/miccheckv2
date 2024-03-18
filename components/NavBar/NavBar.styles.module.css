@@ -1,0 +1,22 @@
+.config {
+  --navbar-height: 4.5rem;
+}
+
+.container {
+  display: none;
+  position: fixed;
+  composes: config;
+  width: 100vw;
+  height: var(--navbar-height);
+  background-color: black;
+  top: 0px;
+  z-index: 200;
+  padding: 1rem;
+}
+
+@media screen and (max-width: 900px) {
+  .container {
+    display: flex;
+    justify-content: space-between;
+  }
+}
