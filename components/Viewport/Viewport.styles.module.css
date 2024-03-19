@@ -1,5 +1,11 @@
 .container {
   composes: config from "../NavBar/NavBar.styles.module.css";
-  margin-top: var(--navbar-height);
+
   display: flex;
+}
+
+@media screen and (max-width: 900px) {
+  .container {
+    margin-top: var(--navbar-height);
+  }
 }

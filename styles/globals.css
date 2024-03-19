@@ -1,5 +1,5 @@
 :root {
-  --obsidian: #rgb(15, 19, 34);
+  --obsidian: rgb(15, 19, 34);
   --navy-blue: #3a405a;
   --sky-blue: #aec5eb;
   --peach: #f9dec9;
@@ -16,7 +16,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  color: var(--obsidian);
+  color: white;
   font-family: var(--main-font);
 }
 

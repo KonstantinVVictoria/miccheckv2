@@ -3,6 +3,7 @@
   display: flex;
   align-items: center;
   width: 100%;
+
   & > span {
     background-color: black;
     height: 1px;
@@ -11,5 +12,7 @@
   & > h1 {
     margin: 1rem;
     font-weight: 400;
+    font-size: 1.7rem;
+    color: black;
   }
 }

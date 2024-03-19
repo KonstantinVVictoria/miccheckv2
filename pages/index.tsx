@@ -11,6 +11,7 @@ import ImageTile from "../components/Tile/ImageTile/ImageTile";
 import VideoTile from "../components/Tile/VideoTile/VideoTile";
 import Section from "../components/Section/Section";
 import { TextTile } from "../components/Tile/TextTile/TextTile";
+import BookForm from "../components/Forms/BookForm/BookForm";
 
 export default function Home() {
   return (
@@ -185,8 +186,8 @@ export default function Home() {
             <ImageTile src="/images/Kev DJ Culver Hotel-28.png" alt="dancing" />
           </Row>
         </Section>
-        <PageBreak>Mixes</PageBreak>
         <Section id="mixes_section">
+          <PageBreak>Mixes</PageBreak>
           <Row>
             <IFrameTile
               width="100%"
@@ -220,7 +221,12 @@ export default function Home() {
             ></IFrameTile>
           </Row>
         </Section>
-        <PageBreak>Book</PageBreak>
+        <Section id="booking_section">
+          <PageBreak>Book</PageBreak>
+          <Row>
+            <BookForm />
+          </Row>
+        </Section>
         <PageBreak>Jobs</PageBreak>
       </Document>
     </>

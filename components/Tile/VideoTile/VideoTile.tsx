@@ -29,6 +29,7 @@ export default function VideoTile(props: VideoProps) {
     width: undefined,
     src: undefined,
     src_type: undefined,
+    mobile_full: undefined,
   };
 
   // useEffect(() => {

@@ -47,6 +47,7 @@
     justify-content: center;
     height: var(--nav-link-section-height);
     width: 100%;
+    color: black;
 
     .link {
       text-decoration: none;
@@ -85,8 +86,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
     & p {
+      color: black;
       font-size: 0.9rem;
     }
     .handles {

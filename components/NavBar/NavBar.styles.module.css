@@ -6,12 +6,45 @@
   display: none;
   position: fixed;
   composes: config;
+
   width: 100vw;
   height: var(--navbar-height);
   background-color: black;
   top: 0px;
   z-index: 200;
   padding: 1rem;
+}
+.nav_menu {
+  composes: config;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10%;
+  font-size: 2rem;
+  flex-direction: column;
+  height: calc(100svh);
+  width: 100vw;
+  background-color: transparent;
+  left: 0;
+  top: 0;
+  z-index: 201;
+  opacity: 1;
+  transition: background 200ms ease, backdrop-filter 200ms ease;
+  pointer-events: none;
+  & > .close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    height: calc(var(--navbar-height) - 1rem);
+  }
+  & > .menu_button {
+    height: 100%;
+  }
+  & > * {
+    opacity: 0;
+    transition: opacity 200ms ease;
+  }
 }
 
 @media screen and (max-width: 900px) {

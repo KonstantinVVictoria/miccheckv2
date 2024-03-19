@@ -9,6 +9,7 @@
   transform: scale(96%, 96%);
 
   & > img {
+    object-fit: cover;
     opacity: 0;
     height: 100%;
     width: 100%;
@@ -49,6 +50,9 @@
   animation: loading-animation 1s ease-in-out infinite alternate;
 }
 @media screen and (max-width: 900px) {
+  .tile {
+    height: 50svh !important;
+  }
   .caption {
     & > p {
       font-size: 1rem !important;

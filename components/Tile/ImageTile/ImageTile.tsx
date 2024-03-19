@@ -31,7 +31,6 @@ export default function ImageTile(props: ImageProps) {
 
     if (ImageElement.naturalWidth !== 0) {
       loadElement(ImageElement);
-      console.log("still");
     } else {
       ContainerElement.classList.add(styles.loading);
       console.log("loading");

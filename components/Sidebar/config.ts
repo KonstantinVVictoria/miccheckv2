@@ -11,6 +11,6 @@ function NavLink(label: string, link: string, type: NavTypeEnum = "normal") {
 export const config = [
   NavLink("Home", ""),
   NavLink("Mixes", "#mixes_section"),
-  NavLink("Book", ""),
+  NavLink("Book", "#booking_section"),
   NavLink("Jobs", ""),
 ];
