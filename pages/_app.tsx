@@ -10,17 +10,20 @@ const cursive_font = Sail({
   weight: "400",
   variable: "--cursive-font",
 });
-
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 const main_font = Jost({ subsets: ["latin"], variable: "--main-font" });
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <Viewport font={`${main_font.variable} ${cursive_font.variable}`}>
-      <NavBar />
-      <Sidebar />
-      <Main>
-        <Component {...pageProps} />
-      </Main>
-    </Viewport>
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <Viewport font={`${main_font.variable} ${cursive_font.variable}`}>
+        <NavBar />
+        <Sidebar />
+        <Main>
+          <Component {...pageProps} />
+        </Main>
+      </Viewport>
+    </LocalizationProvider>
   );
 }
