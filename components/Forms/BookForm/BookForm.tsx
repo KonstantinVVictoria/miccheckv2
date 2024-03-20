@@ -132,8 +132,10 @@ export default function BookForm() {
             )) ||
             (CurrentEntry.type === "dropdown" && (
               <select ref={DropDownRef}>
-                {CurrentEntry.meta.dropdown?.map((label) => (
-                  <option value={label}>{label}</option>
+                {CurrentEntry.meta.dropdown?.map((label, i) => (
+                  <option key={label + i + "dropdown option"} value={label}>
+                    {label}
+                  </option>
                 ))}
               </select>
             )) ||
