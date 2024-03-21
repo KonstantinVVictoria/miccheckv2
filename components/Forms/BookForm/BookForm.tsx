@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useState } from "react";
+import { RefObject, useRef, useState } from "react";
 import Form from "../Form";
 import { LeftArrow, RightArrow } from "../../../svg/icons/Arrows";
 import { stall } from "../../../lib/common";
@@ -17,6 +17,7 @@ type EventTypes =
 
 type MetaEntry = {
   dropdown?: Array<string>;
+  validation?: (text: string) => Boolean;
 };
 function Entry(
   entry_name: string,
@@ -35,31 +36,76 @@ function Entry(
     meta,
   };
 }
+type Validator = (text: string) => Boolean;
 
+function InputValidator(
+  inputref: RefObject<HTMLInputElement>,
+  nextref: RefObject<HTMLButtonElement>
+) {
+  return (text: string, validation_rule: Validator) => {
+    return validation_rule(text);
+  };
+}
 const form_entries = [
   Entry(
     "name",
     "John Doe",
     "Let's get the party started",
-    "What is your name?"
+    "What is your name?",
+    "default",
+    {
+      validation: (text: string) => {
+        return text.length > 0 && text.length <= 24;
+      },
+    }
   ),
   Entry(
     "phone",
     "+1 (415) 889-0008",
     "Phone number",
-    "What's the best phone number to get a hold of you with?"
+    "What's the best phone number to get a hold of you with?",
+    "default",
+    {
+      validation: (text: string) => {
+        return (
+          text.length > 0 &&
+          text.length <= 10 &&
+          /^(\+\d{1,2}\s?)?1?\-?\.?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/.test(
+            text
+          )
+        );
+      },
+    }
   ),
   Entry(
     "email",
     "johndoe@mail.com",
     "Email",
-    "What's the best email to send you a confirmation and booking details?"
+    "What's the best email to send you a confirmation and booking details?",
+    "default",
+    {
+      validation: (text: string) => {
+        return (
+          text.length > 0 &&
+          text.length <= 254 &&
+          /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/.test(
+            text
+          )
+        );
+      },
+    }
   ),
   Entry(
     "event.name",
     "John's Wedding",
     "Event Name",
-    "What's the name of your venue or event?"
+    "What's the name of your venue or event?",
+    "default",
+    {
+      validation: (text: string) => {
+        return text.length > 0 && text.length <= 24;
+      },
+    }
   ),
   Entry("event.date", "", "Event Date", "When is it?", "calender"),
   Entry(
@@ -72,7 +118,15 @@ const form_entries = [
       dropdown: ["wedding", "private", "corporate", "school", "club", "other"],
     }
   ),
-  Entry("event.budget", "", "Budget", "What is your budget?"),
+  Entry("event.budget", "", "Budget", "What is your budget?", "default", {
+    validation: (text: string) => {
+      return (
+        text.length > 0 &&
+        text.length <= 16 &&
+        /^(0|[1-9]\d*)(\.\d+)?$/.test(text)
+      );
+    },
+  }),
   Entry(
     "event.request",
     "",
@@ -90,6 +144,7 @@ export default function BookForm() {
   const CalendarRef = useRef("");
   const DropDownRef = useRef(null);
   const TextAreaRef = useRef(null);
+  const NextButtonRef = useRef(null);
   const [form, set_form_status] = useState({
     current_form: 0,
     data: {
@@ -110,7 +165,7 @@ export default function BookForm() {
       [key: string]: string | object;
     };
   });
-
+  const input_validation = InputValidator(InputRef, NextButtonRef);
   const CurrentEntry = form_entries[form.current_form];
   return (
     <Form>
@@ -121,7 +176,30 @@ export default function BookForm() {
         </div>
         <div ref={InputContainerRef}>
           {(CurrentEntry.type === "default" && (
-            <input placeholder={CurrentEntry.placeholder} ref={InputRef} />
+            <input
+              placeholder={CurrentEntry.placeholder}
+              ref={InputRef}
+              onChange={({ target }) => {
+                const is_valid = input_validation(
+                  target.value,
+                  CurrentEntry.meta.validation as Validator
+                );
+                const input = InputRef.current as unknown as HTMLInputElement;
+                const next =
+                  NextButtonRef.current as unknown as HTMLButtonElement;
+                if (!is_valid) {
+                  next.disabled = true;
+                  next.style.opacity = "0.5";
+                  next.style.pointerEvents = "none";
+                  input.style.borderBottom = "1px solid red";
+                } else {
+                  next.disabled = false;
+                  next.style.opacity = "1";
+                  next.style.pointerEvents = "visible";
+                  input.style.borderBottom = "";
+                }
+              }}
+            />
           )) ||
             (CurrentEntry.type === "calender" && (
               <DateField
@@ -157,6 +235,12 @@ export default function BookForm() {
               const Title = TitleRef.current as unknown as HTMLHeadingElement;
               const Desc = DescRef.current as unknown as HTMLParagraphElement;
               const new_status = { ...form };
+              const next =
+                NextButtonRef.current as unknown as HTMLButtonElement;
+              next.disabled = true;
+              next.style.opacity = "0.5";
+              next.style.pointerEvents = "none";
+
               if (CurrentEntry.type === "default") {
                 const Input = InputRef.current as unknown as HTMLInputElement;
 
@@ -182,12 +266,9 @@ export default function BookForm() {
           </button>
           <button
             style={{
-              opacity:
-                form.current_form < form_entries.length - 1 ? "1" : "0.5",
-              pointerEvents:
-                form.current_form >= form_entries.length - 1 ? "none" : "auto",
+              opacity: "0.5",
+              pointerEvents: "none",
             }}
-            disabled={form.current_form >= form_entries.length - 1}
             onClick={async () => {
               const new_status = { ...form };
               const InputContainer =
@@ -235,13 +316,14 @@ export default function BookForm() {
                 await stall(100);
               }
               new_status.current_form++;
-              console.log(new_status);
+
               set_form_status(new_status);
               for (const Element of [Title, Desc, InputContainer]) {
                 Element.style.opacity = "1";
                 await stall(100);
               }
             }}
+            ref={NextButtonRef}
           >
             <RightArrow
               height="2rem"

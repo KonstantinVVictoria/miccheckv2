@@ -9,7 +9,7 @@
   & > div {
     background-color: transparent;
     height: 100%;
-    backdrop-filter: brightness(30%) blur(8px);
+    backdrop-filter: brightness(30%) blur(60px);
     width: 100%;
     display: flex;
     justify-content: space-between;
