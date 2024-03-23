@@ -29,7 +29,6 @@ type FormValues = {
       name: string;
       date: string;
       type: string;
-      budget: string;
       package: string;
       requests: string;
     };
@@ -195,6 +194,7 @@ export default function BookForm() {
   const DropDownRef = useRef(null);
   const TextAreaRef = useRef(null);
   const NextButtonRef = useRef(null);
+  const ButtonsContainerRef = useRef(null);
   const [overlay_active, set_overlay_status] = useState(false);
 
   const [form, set_form_status] = useState({
@@ -329,7 +329,7 @@ export default function BookForm() {
             )) ||
             null}
         </div>
-        <div className={styles.buttons}>
+        <div className={styles.buttons} ref={ButtonsContainerRef}>
           <button
             style={{
               opacity: form.current_form >= 1 ? "1" : "0.5",
@@ -452,7 +452,77 @@ export default function BookForm() {
               />
             </button>
           ) : (
-            <button style={{ fontSize: "1.5rem" }} ref={NextButtonRef}>
+            <button
+              style={{ fontSize: "1.5rem" }}
+              ref={NextButtonRef}
+              onClick={async () => {
+                const new_status = { ...form };
+                const InputContainer =
+                  InputContainerRef.current as unknown as HTMLDivElement;
+                const Title = TitleRef.current as unknown as HTMLHeadingElement;
+                const Desc = DescRef.current as unknown as HTMLParagraphElement;
+                const ButtonsContainer =
+                  ButtonsContainerRef.current as unknown as HTMLDivElement;
+                const next =
+                  NextButtonRef.current as unknown as HTMLButtonElement;
+                const set_field = (value: any) => {
+                  const keys = CurrentEntry.entry_name.split(".");
+                  if (keys.length === 1) {
+                    new_status.data[keys[0]] = value;
+                  } else {
+                    const last_key = keys.pop() as string;
+                    let current_object = new_status.data as any;
+                    for (const key of keys) {
+                      current_object = current_object[key];
+                    }
+                    current_object[last_key] = value;
+                  }
+                };
+
+                if (CurrentEntry.type === "default") {
+                  const Input = InputRef.current as unknown as HTMLInputElement;
+
+                  set_field(Input.value);
+
+                  Input.value = "";
+                } else if (CurrentEntry.type === "calender") {
+                  const CalendarDate = CalendarRef.current as unknown as Date;
+                  const standard_date = new Date(CalendarDate);
+                  set_field(
+                    standard_date.getMonth() +
+                      1 +
+                      "/" +
+                      standard_date.getDate() +
+                      "/" +
+                      standard_date.getFullYear()
+                  );
+                } else if (CurrentEntry.type === "dropdown") {
+                  const DropDown =
+                    DropDownRef.current as unknown as HTMLSelectElement;
+                  set_field(DropDown.value);
+                }
+
+                fetch("/api/book", {
+                  method: "POST", // *GET, POST, PUT, DELETE, etc.
+                  mode: "cors", // no-cors, *cors, same-origin
+                  cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+                  credentials: "same-origin", // include, *same-origin, omit
+                  headers: {
+                    "Content-Type": "application/json",
+                    // 'Content-Type': 'application/x-www-form-urlencoded',
+                  },
+                  redirect: "follow", // manual, *follow, error
+                  referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+                  body: JSON.stringify(new_status.data), // body data type must match "Content-Type" header
+                });
+                Title.innerHTML = "Thank you!";
+                Desc.innerHTML =
+                  "We've sent you a confirmation email, and we'll reach out to you shortly";
+                InputContainer.style.display = "none";
+                ButtonsContainer.style.display = "none";
+                set_form_status(new_status);
+              }}
+            >
               Submit
             </button>
           )}
@@ -574,11 +644,11 @@ function PackageSelection(props: PackageSelectionProps) {
       <div style={{ fontSize: "1.5rem", gap: "1rem", display: "flex" }}>
         <input
           type="radio"
-          id="sweetheart-package-radio"
+          id="showtime-package-radio"
           name="package"
           onClick={() => set_value("showtime")}
         />
-        <label htmlFor="sweetheart-package-radio">Showtime</label>
+        <label htmlFor="showtime-package-radio">Showtime</label>
       </div>
     </fieldset>
   );
