@@ -150,7 +150,9 @@ export default function Home() {
                   to detail is our highest priority.
                 </p>
               </div>
-              <button className={styles.book_now_button}>Book Now</button>
+              <a className={styles.book_now_button} href="#booking_section">
+                Book Now
+              </a>
             </VideoTile>
           </Row>
           {/* <Row>
