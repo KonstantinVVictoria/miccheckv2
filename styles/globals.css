@@ -46,7 +46,8 @@ a {
   text-decoration: none;
 }
 
-.css-z3c6am-MuiFormControl-root-MuiTextField-root {
+.MuiFormControl-root,
+.MuiTextField-root {
   border: 1px solid white !important;
 
   border-radius: var(--card-border-radius);
