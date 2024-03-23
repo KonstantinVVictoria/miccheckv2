@@ -97,7 +97,7 @@
   .container {
     height: calc(100svh - 4rem - var(--navbar-height));
     & > div > textarea {
-      width: 150%;
+      width: 90vw;
     }
   }
 }
