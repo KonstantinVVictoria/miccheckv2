@@ -96,8 +96,8 @@
 @media screen and (max-width: 900px) {
   .container {
     height: calc(100svh - 4rem - var(--navbar-height));
-    & > div > textarea {
-      width: 85vw !important;
+    & > div > div > textarea {
+      width: 90vw !important;
     }
   }
 }
