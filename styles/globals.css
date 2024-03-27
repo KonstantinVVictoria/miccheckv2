@@ -3,7 +3,7 @@
   --navy-blue: #3a405a;
   --sky-blue: #aec5eb;
   --peach: #f9dec9;
-
+  --gold: #f9ebc9;
   --primary-color: var(--navy--blue);
   --secondary-color: var(--sky-blue);
   --trim-color: var(--peach);
@@ -16,22 +16,25 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  color: white;
+  color: rgb(41, 41, 41);
   font-family: var(--main-font);
 }
 
 *::-webkit-scrollbar {
-  width: 7px;
+  width: 9px;
 }
 
 /* Track */
 *::-webkit-scrollbar-track {
-  background: rgb(204, 204, 204);
+  background: rgb(137, 137, 137);
+
+  border-left: 1px solid black;
 }
 
 /* Handle */
 *::-webkit-scrollbar-thumb {
-  background: black;
+  background: white;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 1);
 }
 
 html,
@@ -48,11 +51,11 @@ a {
 
 .MuiFormControl-root,
 .MuiTextField-root {
-  border: 1px solid white !important;
+  border: 1px solid black !important;
 
   border-radius: var(--card-border-radius);
   & > div > input {
-    color: white !important;
+    color: black !important;
   }
 }
 

@@ -30,7 +30,8 @@
     font-style: italic;
     position: absolute;
     z-index: 2;
-    transition: opacity 50ms linear;
+    transition: opacity 50ms linear, transform 600ms ease;
+    color: white;
   }
 }
 @keyframes loading-animation {

@@ -25,10 +25,13 @@
   & > div > h1 {
     font-size: 3rem;
     font-weight: 600;
+
+    color: var(--gold);
   }
   & > div > p {
     font-size: 1.2rem;
     font-weight: 300;
+    color: white;
   }
 }
 

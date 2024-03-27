@@ -1,15 +1,25 @@
+.theme {
+  --main-color: rgb(41, 41, 41);
+  --back-color: linear-gradient(
+    176deg,
+    rgba(237, 237, 237, 1) 0%,
+    rgb(178, 178, 178) 100%
+  );
+}
 .container {
   composes: config from "../NavBar/NavBar.styles.module.css";
+  composes: theme;
   position: relative;
   width: 100%;
   border-radius: var(--card-border-radius);
   overflow: hidden;
   padding: 0;
   height: calc(100svh - 1rem - var(--navbar-height));
+  background: var(--back-color);
   & > div {
     background-color: transparent;
     height: 100%;
-    backdrop-filter: brightness(30%) blur(60px);
+    backdrop-filter: blur(60px);
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -35,24 +45,27 @@
 
     & > div > h1 {
       font-size: 300%;
-      font-weight: 400;
-      text-shadow: 1px 1px 20px rgba(255, 255, 255, 0.5);
+      font-weight: 800;
+
       z-index: 2;
+      color: var(--main-color);
     }
     & > div > p {
       font-size: 150%;
       z-index: 2;
+      color: var(--main-color);
     }
     & > div > input {
       border: none;
-      border-bottom: 1px solid white;
+      border-bottom: 1px solid var(--main-color);
       background: none;
       font-size: 150%;
-      font-weight: 200;
+      font-weight: 400;
+      color: var(--main-color);
     }
     & > div > textarea {
       border-radius: var(--card-border-radius);
-      border: 1px solid white;
+      border: 1px solid var(--main-color);
       background: none;
       font-size: 100%;
       font-weight: 200;
@@ -62,10 +75,11 @@
       padding: 0.5rem 1rem;
     }
     & > div > select {
+      color: var(--main-color);
       font-size: 1.5rem;
       background: transparent;
       border: none;
-      border-bottom: 1px solid white;
+      border-bottom: 1px solid var(--main-color);
       user-select: none;
       & > option {
         background-color: #000;

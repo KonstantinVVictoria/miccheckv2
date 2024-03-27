@@ -4,7 +4,7 @@ import Sidebar from "../components/Sidebar/Sidebar";
 import Viewport from "../components/Viewport/Viewport";
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import { Jost, Sail } from "next/font/google";
+import { Jost, Sail, Nunito } from "next/font/google";
 const cursive_font = Sail({
   subsets: ["latin"],
   weight: "400",
@@ -12,7 +12,11 @@ const cursive_font = Sail({
 });
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-const main_font = Jost({ subsets: ["latin"], variable: "--main-font" });
+const main_font = Nunito({
+  subsets: ["latin"],
+  variable: "--main-font",
+  weight: "400",
+});
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

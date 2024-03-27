@@ -367,7 +367,7 @@ export default function BookForm() {
           >
             <LeftArrow
               height="2rem"
-              fill="white"
+              fill="rgb(41, 41, 41)"
               selectable={form.current_form >= 1}
             />
           </button>
@@ -447,7 +447,7 @@ export default function BookForm() {
             >
               <RightArrow
                 height="2rem"
-                fill="white"
+                fill="rgb(41, 41, 41)"
                 selectable={form.current_form < form_entries.length - 1}
               />
             </button>
@@ -479,7 +479,10 @@ export default function BookForm() {
                   }
                 };
 
-                if (CurrentEntry.type === "default") {
+                if (
+                  CurrentEntry.type === "default" ||
+                  CurrentEntry.type === "textarea"
+                ) {
                   const Input = InputRef.current as unknown as HTMLInputElement;
 
                   set_field(Input.value);
@@ -528,7 +531,7 @@ export default function BookForm() {
           )}
         </div>
       </div>
-      <img src="/images/LRphoto2-29.png" alt="background image" />
+      {/* <img src="/images/LRphoto2-29.png" alt="background image" /> */}
     </Form>
   );
 }
@@ -549,7 +552,7 @@ function PackageOverlay(props: PackageOverlayProps) {
         padding: "0",
         backdropFilter: "blur(25px)",
         zIndex: 10,
-        background: "rgba(0,0,0,0.75)",
+        background: "rgba(255,255,255,0.75)",
         opacity: is_active ? "1" : "0",
         pointerEvents: is_active ? "visible" : "none",
         transition: "opacity 200ms ease-in",
@@ -567,7 +570,12 @@ function PackageOverlay(props: PackageOverlayProps) {
           set_active(false);
         }}
       >
-        <CloseIcon height="2rem" width="2rem" fill="white" selectable />
+        <CloseIcon
+          height="2rem"
+          width="2rem"
+          fill="rgb(41, 41, 41)"
+          selectable
+        />
       </button>
       <div
         style={{
@@ -671,7 +679,7 @@ function PackageInfo(props: PackageInfoProps) {
         flexDirection: "column",
         gap: "1rem",
         padding: "1rem",
-        border: "1px solid white",
+        border: "1px solid rgb(41, 41, 41)",
         borderRadius: "var(--card-border-radius)",
         width: "80%",
       }}

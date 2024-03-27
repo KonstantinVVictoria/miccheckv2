@@ -34,7 +34,7 @@ export default function NavBar() {
           className={styles.close}
           onClick={() => {
             const Menu = MenuRef.current as unknown as HTMLDivElement;
-            Menu.style.background = "rgba(0,0,0,0)";
+            Menu.style.background = "rgba(255,255,255,0)";
             Menu.style.backdropFilter = "blur(0px)";
             Menu.style.pointerEvents = "none";
             document.documentElement.style.overflowY = "visible";
@@ -44,16 +44,16 @@ export default function NavBar() {
             });
           }}
         >
-          <CloseIcon height="100%" fill="white" />
+          <CloseIcon height="100%" fill="black" />
         </div>
         {NavLinks}
       </div>
-      <CompanyLogoSVG height="100%" fill="white" />
+      <CompanyLogoSVG height="100%" fill="black" />
       <div
         className={styles.menu_button}
         onClick={() => {
           const Menu = MenuRef.current as unknown as HTMLDivElement;
-          Menu.style.background = "rgba(0,0,0,0.9)";
+          Menu.style.background = "rgba(255,255,255,0.9)";
           Menu.style.backdropFilter = "blur(50px)";
           Menu.style.pointerEvents = "visible";
           document.documentElement.style.overflowY = "hidden";
@@ -63,7 +63,7 @@ export default function NavBar() {
           });
         }}
       >
-        <MenuThreeBarIcon height="100%" fill="white" />
+        <MenuThreeBarIcon height="100%" fill="black" />
       </div>
     </div>
   );

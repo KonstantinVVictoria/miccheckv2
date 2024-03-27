@@ -1,5 +1,5 @@
 .book_now_button {
-  border: 1px solid white;
+  border: 1px solid var(--gold);
   background: transparent;
   font-size: 2rem;
   margin-top: 2rem;
@@ -7,7 +7,9 @@
   border-radius: var(--card-border-radius);
   transition: transform 200ms ease;
   cursor: pointer;
-  backdrop-filter: blur(200px);
+  backdrop-filter: blur(200px) !important;
+  position: relative;
+  color: var(--gold);
   &:hover {
     transform: scale(110%);
   }
