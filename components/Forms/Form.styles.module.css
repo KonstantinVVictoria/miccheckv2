@@ -1,10 +1,6 @@
 .theme {
   --main-color: rgb(41, 41, 41);
-  --back-color: linear-gradient(
-    176deg,
-    rgba(237, 237, 237, 1) 0%,
-    rgb(178, 178, 178) 100%
-  );
+  --back-color: var(--peach);
 }
 .container {
   composes: config from "../NavBar/NavBar.styles.module.css";
@@ -82,8 +78,7 @@
       border-bottom: 1px solid var(--main-color);
       user-select: none;
       & > option {
-        background-color: #000;
-        border: none;
+        background-color: white;
       }
     }
     .buttons {

@@ -26,15 +26,14 @@
 
 /* Track */
 *::-webkit-scrollbar-track {
-  background: rgb(137, 137, 137);
-
-  border-left: 1px solid black;
+  background: transparent;
 }
 
 /* Handle */
 *::-webkit-scrollbar-thumb {
   background: white;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 1);
+  border-radius: 100px;
+  border: 1px solid black;
 }
 
 html,
